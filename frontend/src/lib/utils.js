@@ -1,8 +1,9 @@
 import {transcriptions} from './stores';
+import { browser } from '$app/environment';
 import { env } from '$env/dynamic/public';
 
-export let CLIENT_API_HOST = `${env.PUBLIC_API_HOST}`;
-export let CLIENT_WS_HOST = `${env.PUBLIC_API_HOST.replace("http://", "").replace("https://", "")}`;
+export let CLIENT_API_HOST = browser ? `${env.PUBLIC_API_HOST}` : "";
+export let CLIENT_WS_HOST = browser ? `${env.PUBLIC_API_HOST.replace("http://", "").replace("https://", "")}` : "";
 
 // URL Validator
 export const validateURL = function (url) {
